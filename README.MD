@@ -2,7 +2,9 @@
 
 This tool start a container with CUDA 11.7.1 (NVidia GPU) running a Fast API server. 
 
-It allows a LORA (int4 or int8) PEFT fined tuned model to run within a Docker container
+It allows a LORA (int4 or int8) fined tuned model with [Transformers](https://github.com/huggingface/transformers) and [PEFT](https://github.com/huggingface/peft) to run within a Docker container.
+
+Dockerfile based on [HuggingFace PEFT](https://github.com/huggingface/peft/blob/main/docker/peft-gpu/Dockerfile).
 
 Exposed endpoint:
 
@@ -28,7 +30,7 @@ This container does not work on Apple Silicon.
 
 ## Limitations
 
-Right now this container only support LORA PEFT model not merged (ei adaptor on top of base model).
+Right now this container only support LORA PEFT model not merged (ie adapter on top of base model).
 
 Also multiple GPUs are not supported for now.
 
