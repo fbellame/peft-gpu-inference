@@ -1,11 +1,15 @@
 from pydantic import BaseModel, Field
 import os
 
-BASE_MODEL_DIR = os.getenv("BASE_MODEL_DIR", "/mnt/")
+BASE_MODEL_DIR = os.getenv("BASE_MODEL_DIR", "")
 MODEL_NAME = os.getenv("MODEL_NAME", "model")
 
-model_path = os.path.join(BASE_MODEL_DIR, MODEL_NAME)
-lora = os.getenv("LORA", "no")
+if BASE_MODEL_DIR != "":
+    model_path = os.path.join(BASE_MODEL_DIR, MODEL_NAME)
+else:
+    model_path = MODEL_NAME
+
+lora = os.getenv("LORA", "int4")
 print(f"Model path: {model_path}")
 
 class Req(BaseModel):
