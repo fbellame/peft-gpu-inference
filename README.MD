@@ -146,7 +146,7 @@ export RUNPOD_KEY="YOUR_KEY"
 
 curl --request POST \
   --header 'content-type: application/json' \
-  --url 'https://api.runpod.io/graphql?api_key=LAKBP3RPUCBOR2MRAZF4SHC2221O94NK8XLXRJJX' \
+  --url 'https://api.runpod.io/graphql?api_key=$RUNPOD_KEY' \
   --data '{"query": "mutation { podFindAndDeployOnDemand( input: { cloudType: ALL, gpuCount: 1, volumeInGb: 50, containerDiskInGb: 40, gpuTypeId: \"NVIDIA GeForce RTX 3080\", name: \"peft-gpu-inference\", imageName: \"docker.io/fbellame/peft-gpu-inference:11.7.1\", dockerArgs: \"\", ports: \"8000/http\", volumeMountPath: \"/data\" } ) { id imageName env machineId machine { podHostId } } }"}'
 ```
 
