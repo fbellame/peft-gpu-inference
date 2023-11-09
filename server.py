@@ -1,21 +1,23 @@
 from fastapi import FastAPI
 from predict import Predictor
+from monitor import Monitor
 from base import Req, model_path
 
 # Create a FastAPI instance
+monitor = Monitor()
 app = FastAPI()
-predictor = Predictor()
-config = predictor.setup()
+predictor = Predictor(monitor)
+predictor.setup()
 
 @app.get("/")
 async def root():
     return {
-        "model path": model_path, 
-        "peft_type": config.peft_type, 
-        "base_model_name_or_path": config.base_model_name_or_path,
-        "task_type=":  config.task_type,
-        "revision": config.revision
+        "model path": model_path
         }
+
+@app.get("/metrics")
+async def metrics():
+    return monitor.metrics()
 
 # Add the FastAPI route for the /predict endpoint
 @app.post("/predict")

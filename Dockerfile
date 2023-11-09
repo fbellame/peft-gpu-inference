@@ -63,7 +63,7 @@ RUN echo "source activate peft" >> ~/.profile
 ENV PATH /opt/conda/envs/peft/bin:$PATH
 ENV CONDA_DEFAULT_ENV peft
 ENV BASE_MODEL_DIR=""
-ENV MODEL_NAME="fbellame/pdf_to_quizz_llama_13B_lora"
+ENV MODEL_NAME="fbellame/mistral-pdf-to-quizz-7b"
 ENV TRANSFORMERS_CACHE=/data
 ENV LORA="int4"
 
